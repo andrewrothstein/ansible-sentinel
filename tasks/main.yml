@@ -1,0 +1,56 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: check for install
+  become: yes
+  stat:
+    path: '{{ sentinel_install_dir }}'
+  changed_when: False
+  register: sentinel_binary
+- when: not sentinel_binary.stat.exists
+  block:
+    - name: download
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ sentinel_url }}'
+        dest: /tmp/{{ sentinel_zip }}
+        mode: 0644
+        checksum: '{{ sentinel_checksum }}'
+    - name: mkdir
+      become: yes
+      become_user: root
+      file:
+        path: '{{ sentinel_install_dir }}'
+        mode: 0755
+        state: directory
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ sentinel_zip }}
+        dest: '{{ sentinel_install_dir }}'
+        creates: '{{ sentinel_install_dir }}/sentinel'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{ sentinel_zip }}
+        state: absent
+- name: link
+  become: yes
+  become_user: root
+  file:
+    src: '{{ sentinel_install_dir }}/sentinel'
+    dest: '{{ sentinel_link }}'
+    state: link
