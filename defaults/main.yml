@@ -1,6 +1,6 @@
 ---
 # defaults file for sentinel
-sentinel_ver: '0.15.4'
+sentinel_ver: 0.18.4
 sentinel_mirror: https://releases.hashicorp.com/sentinel
 sentinel_os: linux
 sentinel_arch: amd64
@@ -315,3 +315,33 @@ sentinel_checksums:
     windows_386: sha256:3f2f5a7c585d4ea7ea376081eee7d67bacb90e9f382b6f8846a66108f064f24d
     # https://releases.hashicorp.com/sentinel/0.15.4/sentinel_0.15.4_windows_amd64.zip
     windows_amd64: sha256:9a12e54763ade06022547534baaf06148249746e807a1c46c24fadeaca061d79
+  # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_SHA256SUMS
+  '0.18.4':
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_darwin_amd64.zip
+    darwin_amd64: sha256:7ce71e5850e46e71814ba92d0ae6596bb0b89d184b7b8a59e9921e0d4d4bd72f
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_freebsd_386.zip
+    freebsd_386: sha256:2c1c7935845b83bb50c0abf6b7b410a36f2c242d85ad6041e1f82313a7c75303
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_freebsd_amd64.zip
+    freebsd_amd64: sha256:09bec826defaabfaef9263545850637148bb91a4e0c4358783efdc5177fbb58b
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_freebsd_arm.zip
+    freebsd_arm: sha256:809a860619576867282144a76e5521bf72959511fcba21acc92ecd9946743204
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_linux_386.zip
+    linux_386: sha256:d5abee7c652ebaf54640ce6451da7c79a27744a47a60692c8544da9cdd391d36
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_linux_amd64.zip
+    linux_amd64: sha256:a2969317b38abc201aded53592cf931c150455aeb0061116f3459880c9d9a41a
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_linux_arm.zip
+    linux_arm: sha256:3484a11f83531bf3c62b670b8b6df1203b3913333dfca3e67e223b508c53423e
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_netbsd_386.zip
+    netbsd_386: sha256:55426f9126524a1c145888bc037d3ab42a77d609762531c86a1932f2c045aac8
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_netbsd_amd64.zip
+    netbsd_amd64: sha256:2d9cdbe355efe08fa16cff01db59f2975bd06fca594c6690a67a7b40fd5240cb
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_openbsd_386.zip
+    openbsd_386: sha256:3c9b9c7d05eb7c038ebd04a3e27598c826b39eebefd09d457a0b5e4c77dd6b36
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_openbsd_amd64.zip
+    openbsd_amd64: sha256:1d8aba47e5dbf1d7045f28cb9b303c8dc12150a9aed9c523394e024e2d4560d3
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_solaris_amd64.zip
+    solaris_amd64: sha256:eaa16fedc12264ddb49c8f969ac1eb0e26956d1848169f482c48aa9555df6209
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_windows_386.zip
+    windows_386: sha256:a1a078c13a29c49d598d9eaae4fa26758974f963450fe9d40ee6037ebdd55e3b
+    # https://releases.hashicorp.com/sentinel/0.18.4/sentinel_0.18.4_windows_amd64.zip
+    windows_amd64: sha256:efb19ff2717f67219748710b3d7cdbca183e717377f8356e72f5683fc387fdf3

@@ -7,5 +7,5 @@ sentinel_url: '{{ sentinel_mirror }}/{{ sentinel_ver }}/{{ sentinel_zip }}'
 sentinel_checksum: '{{ sentinel_checksums[sentinel_ver][sentinel_platform] }}'
 
 sentinel_install_dir: '{{ sentinel_parent_install_dir }}/{{ sentinel_name }}'
-
+sentinel_exe: '{{ sentinel_install_dir }}/sentinel'
 sentinel_link: '{{ sentinel_parent_install_dir }}/bin/sentinel'
