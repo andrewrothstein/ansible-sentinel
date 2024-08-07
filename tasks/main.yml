@@ -1,56 +1,9 @@
 ---
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
-  with_first_found:
-    - files:
-        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
-        - '{{ ansible_distribution }}.yml'
-        - '{{ ansible_os_family }}.yml'
-      skip: true
-      paths:
-        - '{{ role_path }}/vars'
-- name: check for install in {{ sentinel_install_dir }}
-  become: true
-  stat:
-    path: '{{ sentinel_install_dir }}'
-  changed_when: False
-  register: sentinel_binary
-- when: not sentinel_binary.stat.exists
-  block:
-    - name: downloading {{ sentinel_url }}
-      become: true
-      become_user: root
-      get_url:
-        url: '{{ sentinel_url }}'
-        dest: '{{ sentinel_tmp_zip }}'
-        mode: 0644
-        checksum: '{{ sentinel_checksum }}'
-    - name: mkdir {{ sentinel_install_dir }}
-      become: true
-      become_user: root
-      file:
-        path: '{{ sentinel_install_dir }}'
-        mode: 0755
-        state: directory
-    - name: unarchiving {{ sentinel_tmp_zip }}
-      become: true
-      become_user: root
-      unarchive:
-        remote_src: true
-        src: '{{ sentinel_tmp_zip }}'
-        dest: '{{ sentinel_install_dir }}'
-        creates: '{{ sentinel_exe }}'
-  always:
-    - name: rm {{ sentinel_tmp_zip }}
-      become: true
-      become_user: root
-      file:
-        path: '{{ sentinel_tmp_zip }}'
-        state: absent
-- name: link {{ sentinel_link }} to {{ sentinel_exe }}
-  become: true
-  become_user: root
-  file:
-    src: '{{ sentinel_exe }}'
-    dest: '{{ sentinel_link }}'
-    state: link
+- name: Installing sentinel binaries
+  ansible.builtin.include_role:
+    name: andrewrothstein.hashi
+  vars:
+    hashi_apps:
+      - name: '{{ sentinel_app.name | default("sentinel") }}'
+        ver: '{{ sentinel_app.ver | default(sentinel_ver) }}'
+        meta: '{{ sentinel_app.meta | default("") }}'
